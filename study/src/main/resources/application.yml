@@ -1,0 +1,31 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/tsx_lhr?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    username: root
+    password: liuyinuo1314
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    nitialSize: 10 #初始化连接池大小
+    minIdle: 10 #初始化最小连接池数量
+    maxActive: 100 #初始化最大连接池数量
+    maxWait: 6000 #配置获取连接等待超时的时间
+    timeBetweenEvictionRunsMills: 6000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    minEvictableIdleTimeMillis: 30000 #配置一个连接在池中最小生存的时间，单位是毫秒
+    validationQuery: SELECT 'x' #测试连接
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com:
+      lhrtsx:
+        study:
+          Mapper: debug
+
+
